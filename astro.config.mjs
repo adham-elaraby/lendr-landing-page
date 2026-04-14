@@ -2,13 +2,13 @@ import { defineConfig } from 'astro/config';
 
 import tailwind from "@astrojs/tailwind";
 
-// Import the Vercel adapter
-import vercel from '@astrojs/vercel';
+// Import the Cloudflare adapter
+import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://positivustheme.vercel.app",
+  site: "https://lendr.workers.dev",
   integrations: [tailwind()],
   output: 'server',
-  adapter: vercel(),
+  adapter: cloudflare(),
 });
