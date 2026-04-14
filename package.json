@@ -6,6 +6,8 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
+    "deploy": "npm run build && wrangler deploy",
+    "deploy:version": "npm run build && wrangler versions upload",
     "preview": "astro preview",
     "astro": "astro"
   },
