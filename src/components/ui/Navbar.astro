@@ -12,7 +12,8 @@ const navButton = { href: "#get-started", label: "Join Lendr" };
 
 <div class="mt-20">
   <nav class="fixed left-0 top-0 z-50 w-full px-5 pt-4">
-    <header class="relative mx-auto flex max-w-[1280px] items-center justify-between rounded-[24px] border border-white/50 bg-white/60 px-5 py-4 shadow-[0_10px_30px_rgba(0,0,0,0.12)] backdrop-blur-xl">
+    <div id="menu-backdrop" class="fixed inset-0 z-0 hidden bg-white/20 backdrop-blur-xl lg:hidden"></div>
+    <header class="relative z-10 mx-auto flex max-w-[1280px] items-center justify-between rounded-[24px] border border-white/50 bg-white/60 px-5 py-4 shadow-[0_10px_30px_rgba(0,0,0,0.12)] backdrop-blur-xl">
       <a href="#home" class="flex items-center gap-2 text-2xl font-medium">
         <span class="inline-block h-3 w-3 rounded-full bg-green"></span>
         Lendr
@@ -32,12 +33,12 @@ const navButton = { href: "#get-started", label: "Join Lendr" };
         </svg>
       </button>
 
-      <div id="menu-items" class="absolute left-0 top-[calc(100%+10px)] hidden w-full rounded-2xl border border-white/50 bg-white/70 shadow-[0_12px_24px_rgba(0,0,0,0.12)] backdrop-blur-xl lg:static lg:flex lg:w-auto lg:items-center lg:gap-7 lg:rounded-none lg:border-0 lg:bg-transparent lg:shadow-none lg:backdrop-blur-0">
-        <ul class="flex flex-col gap-1 p-5 lg:flex-row lg:items-center lg:gap-7 lg:p-0">
+      <div id="menu-items" class="absolute left-0 top-[calc(100%+10px)] z-[60] hidden w-full overflow-hidden rounded-2xl border border-white/50 bg-white/90 shadow-[0_10px_30px_rgba(0,0,0,0.12)] backdrop-blur-xl lg:static lg:flex lg:w-auto lg:items-center lg:gap-7 lg:overflow-visible lg:rounded-none lg:border-0 lg:bg-transparent lg:shadow-none lg:backdrop-blur-0">
+        <ul class="flex flex-col gap-2 p-5 lg:flex-row lg:items-center lg:gap-7 lg:p-0">
           {
             menuitems.map((item) => (
               <li>
-                <a href={item.href} class="mobile-nav-link block rounded-lg px-3 py-2 text-zinc-700 transition hover:bg-white/60 hover:text-black" data-close-menu="true">
+                <a href={item.href} class="mobile-nav-link block rounded-xl border border-white/60 bg-white/95 px-3 py-2 text-zinc-700 shadow-sm backdrop-blur-md transition hover:bg-white hover:text-black lg:rounded-lg lg:border-0 lg:bg-transparent lg:shadow-none lg:backdrop-blur-0 lg:hover:bg-white/60" data-close-menu="true">
                   {item.label}
                 </a>
               </li>
@@ -45,7 +46,7 @@ const navButton = { href: "#get-started", label: "Join Lendr" };
           }
         </ul>
         <div class="px-5 pb-5 lg:p-0">
-          <a href={navButton.href} class="mobile-nav-link inline-flex w-full items-center justify-center rounded-2xl border border-zinc-700/40 bg-white/40 px-6 py-3 shadow-sm backdrop-blur transition hover:bg-white/65 lg:w-auto" data-close-menu="true">
+          <a href={navButton.href} class="mobile-nav-link inline-flex w-full items-center justify-center rounded-2xl border border-zinc-700/40 bg-white/95 px-6 py-3 shadow-sm backdrop-blur-md transition hover:bg-white lg:w-auto lg:bg-white/40 lg:hover:bg-white/65" data-close-menu="true">
             {navButton.label}
           </a>
         </div>
@@ -57,12 +58,14 @@ const navButton = { href: "#get-started", label: "Join Lendr" };
 <script is:inline>
   const menuToggle = document.getElementById("menu-toggle");
   const menuItems = document.getElementById("menu-items");
+  const menuBackdrop = document.getElementById("menu-backdrop");
   const iconOpen = document.getElementById("icon-open");
   const iconClose = document.getElementById("icon-close");
   const closeMenuItems = document.querySelectorAll('[data-close-menu="true"]');
 
   menuToggle?.addEventListener("click", () => {
     menuItems?.classList.toggle("hidden");
+    menuBackdrop?.classList.toggle("hidden");
     iconOpen?.classList.toggle("hidden");
     iconClose?.classList.toggle("hidden");
   });
@@ -70,8 +73,28 @@ const navButton = { href: "#get-started", label: "Join Lendr" };
   closeMenuItems.forEach((item) => {
     item.addEventListener("click", () => {
       menuItems?.classList.add("hidden");
+      menuBackdrop?.classList.add("hidden");
       iconOpen?.classList.remove("hidden");
       iconClose?.classList.add("hidden");
     });
   });
+
+  menuBackdrop?.addEventListener("click", () => {
+    menuItems?.classList.add("hidden");
+    menuBackdrop?.classList.add("hidden");
+    iconOpen?.classList.remove("hidden");
+    iconClose?.classList.add("hidden");
+  });
 </script>
+
+<style is:inline>
+  @media (max-width: 1023px) {
+    #menu-items {
+      background: rgba(255, 255, 255, 0.9) !important;
+      border-color: rgba(255, 255, 255, 0.5) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12) !important;
+      backdrop-filter: blur(22px) saturate(170%) !important;
+      -webkit-backdrop-filter: blur(22px) saturate(170%) !important;
+    }
+  }
+</style>
