@@ -1,11 +1,15 @@
-<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_920_231)">
-<rect width="36" height="36" fill="#B9FF66"/>
-<path d="M17.9986 5.53472L35.5997 0.349121L30.464 18.0001L35.5997 35.6012L17.9986 30.4655L0.347656 35.6012L5.53325 18.0001L0.347656 0.349121L17.9986 5.53472Z" fill="black"/>
-</g>
-<defs>
-<clipPath id="clip0_920_231">
-<rect width="36" height="36" fill="white"/>
-</clipPath>
-</defs>
+<svg width="36" height="36" xmlns="http://www.w3.org/2000/svg" fill="none">
+ <defs>
+  <clipPath id="clip0_920_231">
+   <rect id="svg_1" fill="white" height="36" width="36"/>
+  </clipPath>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_2" clip-path="url(#clip0_920_231)">
+   <rect id="svg_3" fill="#B9FF66" height="36" width="36"/>
+   <path id="svg_4" fill="black" d="m17.9986,5.53472l17.6011,-5.1856l-5.1357,17.65098l5.1357,17.6011l-17.6011,-5.1357l-17.65094,5.1357l5.18559,-17.6011l-5.18559,-17.65098l17.65094,5.1856z"/>
+  </g>
+  <text xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="7" id="svg_5" y="19.64531" x="7.39104" stroke-width="0" stroke="#000" fill="#b9ff66">Lendr</text>
+ </g>
 </svg>
